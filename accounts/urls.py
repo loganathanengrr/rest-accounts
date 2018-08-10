@@ -1,0 +1,59 @@
+from django.urls import include, re_path,path
+from .views import *
+from rest_framework_jwt.views import (
+	refresh_jwt_token,
+	verify_jwt_token
+	)
+
+urlpatterns=[
+	path(
+		'create-jwt-token/',
+		LoginAPIView.as_view(),
+		name='create-jwt-token'
+		),
+	path(
+		'get-user/',
+		UserView.as_view(),
+		name='get_user'
+		),
+	path(
+		'verify-jwt-token/',
+		verify_jwt_token,
+		name='verify_token'
+		),
+	path(
+		'refresh-jwt-token/',
+		refresh_jwt_token,
+		name='refresh_token'
+		),
+	path(
+		'create-user/',
+		CreateUserView.as_view(),
+		name='create-user'
+		),
+	path(
+		'password-change/',
+		PasswordChangeView.as_view(),
+		name='password_change'
+		),
+	path(
+		'username-change/',
+		UserNameChangeView.as_view(),
+		name='username_change'
+		),
+	path(
+		'password-reset/',
+		PasswordResetView.as_view(),
+		name ='password_reset'
+		),
+	re_path(
+		r'^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+		PasswordResetConfirmView.as_view(),
+		name='password_reset_confirm'
+	 	),
+	re_path(
+		r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+		EmailActivationView.as_view(),
+		name='email_activate'
+	 	),
+]
