@@ -9,6 +9,7 @@ src/ecommerce/aws/ignore2.py
 bin/
 include/
 pip-selfcheck.json
+man/
 
 # Django related 
 # src/<yourproject>/settings/local.py
