@@ -3,5 +3,5 @@ django-cors-headers==2.4.0
 django-templated-mail==1.0.0
 djangorestframework==3.8.2
 djangorestframework-jwt==1.11.0
-PyJWT==1.6.4
+PyJWT==2.4.0
 pytz==2018.5
